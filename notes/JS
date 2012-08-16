@@ -1,0 +1,10 @@
+* Using objects as hashes in JS is a pain in the ass. There is no
+  keys() function.
+
+* Using arrays in JS is a pain in the ass.  for..in works only for
+  hashes.  You could however use for (var i in array) { ..array[i].. }
+  I think.
+
+* Whether to use .method() versus .attribute is going to be a
+  perennial problem.
+
