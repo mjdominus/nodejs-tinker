@@ -35,4 +35,16 @@ test.is(hash.sortedKeys(h).join(),
         "apple,banana,cherry,kiwi",
         "sortedKeys test");
 
+test.ok(setEq(hash.values(h),
+              ['red', 'red', 'brown', 'yellow']),
+        "values test");
+
+var K = [], V = [];
+hash.each(h, function(k, v) {
+  K.push(k);
+  V.push(v);
+});
+test.ok(setEq(hash.keys(h), K), "each() key list");
+test.ok(setEq(hash.values(h), V), "each() value list");
+
 test.done_testing();
