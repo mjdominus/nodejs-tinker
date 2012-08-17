@@ -39,4 +39,10 @@ exports.harness = function () { harness };
 exports.is = harness.is;
 exports.done_testing = harness.done_testing;
 exports.is = harness.is;
-
+exports.ok = function(v, msg) {
+    if (v) {
+        harness.ok(msg);
+    } else {
+        harness.nok(undefined, undefined, msg);
+    }
+};
