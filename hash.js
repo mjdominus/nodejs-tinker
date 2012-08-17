@@ -22,3 +22,12 @@ exports.each = function (h, f) {
     for (i in h) f(i, h[i]);
     return;
 };
+
+exports.new = function (h) {
+    return { data: h,
+             keys: function() { return exports.keys(h) },
+             sortedKeys: function() { return exports.sortedKeys(h) },
+             values: function() { return exports.values(h) },
+             each: function(f) { return exports.each(h, f) },
+           };
+};

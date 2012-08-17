@@ -39,12 +39,36 @@ test.ok(setEq(hash.values(h),
               ['red', 'red', 'brown', 'yellow']),
         "values test");
 
-var K = [], V = [];
-hash.each(h, function(k, v) {
-  K.push(k);
-  V.push(v);
-});
-test.ok(setEq(hash.keys(h), K), "each() key list");
-test.ok(setEq(hash.values(h), V), "each() value list");
+{
+  var K = [], V = [];
+  hash.each(h, function(k, v) {
+    K.push(k);
+    V.push(v);
+  });
+  test.ok(setEq(hash.keys(h), K), "each() key list");
+  test.ok(setEq(hash.values(h), V), "each() value list");
+}
+
+{
+  console.log("# OO interface");
+  var H = hash.new(h);
+  test.ok(setEq(H.keys(),
+              [ "apple", "banana", "cherry", "kiwi" ]),
+          "keys test");
+  test.is(H.sortedKeys().join(),
+          "apple,banana,cherry,kiwi",
+          "sortedKeys test");
+  test.ok(setEq(H.values(),
+                ['red', 'red', 'brown', 'yellow']),
+          "values test");
+
+  var K = [], V = [];
+  H.each(function(k, v) {
+    K.push(k);
+    V.push(v);
+  });
+  test.ok(setEq(H.keys(), K), "each() key list");
+  test.ok(setEq(H.values(), V), "each() value list");
+}
 
 test.done_testing();

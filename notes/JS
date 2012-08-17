@@ -13,4 +13,8 @@
   mine only works because the test harness is a singleton.  Presumably
   there is an object system somewhere.
 
+* 'return' is NOT optional; if you omit the final return in a
+  function, it returns undefined.
+
+* testing for undefined is done with 'x == undefined'
 
