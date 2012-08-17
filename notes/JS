@@ -8,3 +8,9 @@
 * Whether to use .method() versus .attribute is going to be a
   perennial problem.
 
+* How is an object method supposed to call self methods? I hacked
+  around it in test.js, but the hack is not going to work in general;
+  mine only works because the test harness is a singleton.  Presumably
+  there is an object system somewhere.
+
+
