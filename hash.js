@@ -29,5 +29,7 @@ exports.new = function (h) {
              sortedKeys: function() { return exports.sortedKeys(h) },
              values: function() { return exports.values(h) },
              each: function(f) { return exports.each(h, f) },
+             get: function(k) { return h[k] },
+             put: function(k, v) { return h[k] = v },
            };
 };

@@ -69,6 +69,12 @@ test.ok(setEq(hash.values(h),
   });
   test.ok(setEq(H.keys(), K), "each() key list");
   test.ok(setEq(H.values(), V), "each() value list");
+  test.is(H.get("apple"), "red", "get");
+  test.is(H.get("blueberry"), undefined, "get missing key");
+  H.put("blueberry", "blue");
+  H.put("apple", "green");
+  test.is(H.get("apple"), "green", "put existing key");
+  test.is(H.get("blueberry"), "blue", "put new key");
 }
 
 test.done_testing();
