@@ -1,0 +1,30 @@
+
+Architecture plan:
+
+Store comments in memecached indexed by "comment:" + ID number.  Also
+store "maxid" in memcached.  Use memcached atomic increment to
+allocate new IDS.
+
+API server accepts only the following call:
+*  Post comment: input, comment data; output is new comment ID or failure code.
+   Stores comment in memcached. Also caches dates of known comments.
+
+
+* API server
+  * Set up with node
+  * Parse request
+  * Allocate ID for new comment
+  * Store comment in memcached
+  * Return success / failure code
+
+* Ajax page
+   * Memcached communication
+   * Periodically check "maxid"
+   * if maxid has increased, query memcached for new comments
+   * insert new comments into page
+   * When form posted, communicate new comment to API server
+   * On success, insert new comment into page
+
+* Memcached
+   * Sysadmin work
+
